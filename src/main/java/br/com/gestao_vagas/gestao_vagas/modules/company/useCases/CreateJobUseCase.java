@@ -12,9 +12,7 @@ public class CreateJobUseCase {
     private JobRepository jobRepository;
 
     public JobEntity execute(JobEntity jobEntity) {
-        if (jobEntity.getCompanyId() != null) {
-            return this.jobRepository.save(jobEntity);
-        }
-        throw new RuntimeException("Company id nulo");
+        return this.jobRepository.save(jobEntity);
+
     }
 }
