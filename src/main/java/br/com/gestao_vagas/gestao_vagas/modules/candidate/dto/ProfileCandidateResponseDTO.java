@@ -1,16 +1,13 @@
 package br.com.gestao_vagas.gestao_vagas.modules.candidate.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.UUID;
 
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 public class ProfileCandidateResponseDTO {
     private String description;
     private String username;
