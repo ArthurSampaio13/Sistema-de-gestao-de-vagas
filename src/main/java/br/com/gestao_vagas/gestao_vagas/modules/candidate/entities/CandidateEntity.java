@@ -42,6 +42,7 @@ public class CandidateEntity {
 
     @Schema(example = "Desenvolvedor java", description = "Breve descrição da vaga")
     private String description;
+
     private String curriculum;
 
     @CreationTimestamp

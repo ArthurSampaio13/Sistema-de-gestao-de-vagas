@@ -25,6 +25,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/company/job")
+@Tag(name = "Job", description = "Informações sobre vagas")
 public class JobController {
 
     @Autowired
@@ -32,7 +33,6 @@ public class JobController {
 
     @PostMapping("/")
     @PreAuthorize("hasRole('company')")
-    @Tag(name = "Job", description = "Informações sobre vagas")
     @Operation(summary = "Cadastro de vagas",
             description = "Essa função é responsável por cadastrar as vagas dentro da empresa")
     @ApiResponses(value = {
