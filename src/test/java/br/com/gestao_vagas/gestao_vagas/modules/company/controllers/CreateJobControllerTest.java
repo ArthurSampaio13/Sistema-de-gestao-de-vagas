@@ -20,6 +20,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.UUID;
+
 import static br.com.gestao_vagas.gestao_vagas.utils.TestUtils.objectToJson;
 
 @RunWith(SpringRunner.class)
@@ -71,6 +73,24 @@ public class CreateJobControllerTest {
         ).andExpect(MockMvcResultMatchers.status().isOk());
 
         System.out.println(result);
+    }
+
+    @Test
+    public void should_not_be_able_to_create_a_new_if_company_not_found() throws Exception {
+
+        var createJobDTO = CreateJobDTO.builder()
+                .benefits("BENEFITS_TEST")
+                .description("DESCRIPTION_TEST")
+                .level("LEVEL_TEST")
+                .build();
+
+        mockMvc.perform(
+                        MockMvcRequestBuilders.post("/company/job/")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(objectToJson(createJobDTO))
+                                .header("Authorization", TestUtils.generateToken(UUID.randomUUID(),
+                                        "secret")))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
 
